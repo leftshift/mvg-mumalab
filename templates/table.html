@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+  {% if not data %}
+    <div class="alert alert-warning" role="alert">
+      Could not get data :(
+    </div>
+  {% else %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            Station
+          </th>
+          <th>
+            Line
+          </th>
+          <th>
+            Destination
+          </th>
+          <th>
+            Departure
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dept in data %}
+        <tr>
+          <td>{{ dept.station }}</td>
+          <td><img src="{{ dept.linesymbolurl }}" alt="{{ dept.linename }}"></td>
+          <td>{{ dept.destination }}</td>
+          <td>{{ dept.time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody
+    </table>
+  {% endif %}
+{% endblock %}
